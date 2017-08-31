@@ -1,0 +1,10 @@
+{
+  "name": "hapijs-mongoose-restapi",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "devDependencies": {
+    "hapi": "^16.5.2",
+    "mongoose": "^4.11.9"
+  }
+}
