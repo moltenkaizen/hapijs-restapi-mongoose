@@ -28,6 +28,18 @@ module.exports = [
     }
   },
   {
+    method: 'GET',
+    path: '/api/wolves/{name}',
+    handler: function (request, reply) {
+      Wolf.find({name: request.params.name}, function (error, wolf) {
+        if (error) {
+          console.log(error);
+        }
+        reply(wolf);
+      });
+    }
+  },
+  {
     method: ['PUT', 'POST'],
     path: '/api/wolves/{name}',
     handler: function (request, reply) {
