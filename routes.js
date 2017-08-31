@@ -42,6 +42,19 @@ module.exports = [
         reply(wolf.id);
       });
     }
+  },
+  {
+    method: 'DELETE',
+    path: '/api/wolves/{name}',
+    handler: function (request, reply) {
+      Wolf.findOneAndRemove({name: request.params.name}, (err, wolf) => {
+        if (!wolf || err) {
+          reply(wolf).code(404);
+        } else {
+          reply(wolf.id).code(200);
+        }
+      });
+    }
   }
 ];
 
