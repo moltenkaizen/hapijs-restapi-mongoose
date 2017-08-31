@@ -1,4 +1,5 @@
 const Wolf = require('./models/Wolf');
+const boom = require('boom');
 
 module.exports = [
   {
@@ -61,7 +62,7 @@ module.exports = [
     handler: function (request, reply) {
       Wolf.findOneAndRemove({name: request.params.name}, (err, wolf) => {
         if (!wolf || err) {
-          reply(wolf).code(404);
+          reply(boom.notFound('Cannot find that wolf to delete'));
         } else {
           reply(wolf.id).code(200);
         }
